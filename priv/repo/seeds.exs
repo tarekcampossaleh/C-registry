@@ -14,7 +14,6 @@
 alias Cumbuca.Repo
 alias Cumbuca.Schemas.{Transaction, User}
 
-
 %User{
   name: "Primeiro Usuario Teste",
   cpf: 0_101_010_101,
