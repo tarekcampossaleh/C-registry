@@ -1,6 +1,5 @@
 defmodule Cumbuca.Model.Balance do
   alias Cumbuca.Repo
-  alias Cumbuca.Schemas.Transaction
   import Cumbuca.Model.Connections
 
   def update_balance(user_id, value) do
@@ -13,12 +12,8 @@ defmodule Cumbuca.Model.Balance do
     end
   end
 
-  def has_balance?(user_id, value) do 
+  def has_balance?(user_id, value) do
     user = get_user(user_id)
-    user.balance > value
-  end
-
-  def register_transaction(sender_id, receiver_id, value) do
-    Repo.insert(%Transaction{sender_id: sender_id, receiver_id: receiver_id, value: value})
+    user.balance >= value
   end
 end
