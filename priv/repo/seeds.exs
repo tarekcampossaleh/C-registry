@@ -14,18 +14,18 @@
 alias Cumbuca.Repo
 alias Cumbuca.Schemas.{Transaction, User}
 
-%User{
-  name: "Primeiro Usuario Teste",
-  cpf: 0_101_010_101,
-  email: "initial_one@user.com",
-  balance: 0
-}
-|> Repo.insert!()
+# %User{
+#  name: "Primeiro Usuario Teste",
+#  cpf: 0_101_010_101,
+#  email: "initial_one@user.com",
+#  balance: 0
+# }
+# |> Repo.insert!()
 
-%User{
-  name: "Segundo Usuario Teste",
-  cpf: 0_202_020_202,
-  email: "initial_two@user.com",
-  balance: 0
-}
-|> Repo.insert!()
+# %User{
+#  name: "Segundo Usuario Teste",
+#  cpf: 0_202_020_202,
+#  email: "initial_two@user.com",
+#  balance: 0
+# }
+# |> Repo.insert!()

@@ -7,6 +7,7 @@ defmodule Cumbuca.Repo.Migrations.Initial do
       add :cpf, :bigint
       add :email, :string
       add :balance, :integer
+      add :password_hash, :string
 
       timestamps()
     end

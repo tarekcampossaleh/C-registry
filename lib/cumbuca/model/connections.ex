@@ -13,9 +13,9 @@ defmodule Cumbuca.Model.Connections do
 
   def get_user(id), do: Repo.get!(User, id)
 
-  def create_user(name, cpf, email, balance \\ 0) do
+  def create_user(name, password, cpf, email, balance \\ 0) do
     %User{}
-    |> User.changeset(%{name: name, cpf: cpf, email: email, balance: balance}) 
-    |> Repo.insert!()
+    |> User.changeset(%{name: name, password: password, cpf: cpf, email: email, balance: balance})
+    |> Repo.insert()
   end
 end
