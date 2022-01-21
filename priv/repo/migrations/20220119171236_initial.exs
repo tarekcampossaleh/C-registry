@@ -4,7 +4,7 @@ defmodule Cumbuca.Repo.Migrations.Initial do
   def change do
     create table("user") do
       add :name, :string
-      add :cpf, :integer
+      add :cpf, :bigint
       add :email, :string
       add :balance, :integer
 
