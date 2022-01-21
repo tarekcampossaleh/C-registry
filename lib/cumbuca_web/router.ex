@@ -1,7 +1,6 @@
 defmodule CumbucaWeb.Router do
   use CumbucaWeb, :router
 
-
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -14,5 +13,4 @@ defmodule CumbucaWeb.Router do
       interface: :simple,
       context: %{pubsub: CumbucaWeb.Endpoint}
   end
-
 end
