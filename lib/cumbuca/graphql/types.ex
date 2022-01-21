@@ -9,4 +9,9 @@ defmodule Cumbuca.Graphql.Types do
     field :email, non_null(:string)
     field :balance, non_null(:integer)
   end
+
+  @desc "JWT Token"
+  object :token do
+    field :token, :string
+  end
 end
