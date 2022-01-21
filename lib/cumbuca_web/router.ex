@@ -3,6 +3,13 @@ defmodule CumbucaWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    plug Plug.Parsers,
+      parsers: [:urlencoded, :multipart, :json],
+      pass: ["*/*"],
+      json_decoder: Poison
+
+    plug Cumbuca.Context
   end
 
   scope "/" do

@@ -40,3 +40,9 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+# configures Guardian
+config :cumbuca, Cumbuca.GuardianSerializer,
+  issuer: "Cumbuca",
+  secret_key: "YyT0wXsBG/026lUjvIcLatYp/GEc6ZONWqF6ZvhdlcBvXajlCWQ8h3zLflZtAosD",
+  serializer: Cumbuca.GuardianSerializer

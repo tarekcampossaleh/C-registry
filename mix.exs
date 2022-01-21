@@ -20,7 +20,8 @@ defmodule Cumbuca.MixProject do
   def application do
     [
       mod: {Cumbuca.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :guardian],
+      #applications: [:guardian]
     ]
   end
 
@@ -46,7 +47,9 @@ defmodule Cumbuca.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:absinthe, "~> 1.6"},
       {:absinthe_plug, "~> 1.5"},
-      {:guardian, "~> 2.2"}
+      {:guardian, "~> 2.0"},
+      {:poison, "~> 5.0"},
+      {:bcrypt_elixir, "~> 2.0"}
     ]
   end
 
