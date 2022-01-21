@@ -16,4 +16,9 @@ defmodule Cumbuca.Model.Balance do
     user = get_user(user_id)
     user.balance >= value
   end
+
+  def current_balance(user_id) do
+    user = get_user(user_id)
+    user.balance
+  end
 end
