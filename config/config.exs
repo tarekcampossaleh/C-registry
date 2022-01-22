@@ -42,7 +42,7 @@ config :phoenix, :json_library, Jason
 import_config "#{config_env()}.exs"
 
 # configures Guardian
-config :cumbuca, Cumbuca.GuardianSerializer,
+config :cumbuca, CumbucaWeb.GuardianSerializer,
   issuer: "Cumbuca",
   secret_key: "YyT0wXsBG/026lUjvIcLatYp/GEc6ZONWqF6ZvhdlcBvXajlCWQ8h3zLflZtAosD",
   serializer: Cumbuca.GuardianSerializer

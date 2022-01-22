@@ -1,10 +1,10 @@
-defmodule Cumbuca.Graphql.Schema do
+defmodule CumbucaWeb.Schema do
   use Absinthe.Schema
-  import_types(Cumbuca.Graphql.Types)
+  import_types(CumbucaWeb.Types)
 
-  alias Cumbuca.Graphql.Resolver.ChargeResolver
-  alias Cumbuca.Graphql.Resolver.UserResolver
-  alias Cumbuca.Graphql.Resolver.SessionResolver
+  alias CumbucaWeb.Resolver.ChargeResolver
+  alias CumbucaWeb.Resolver.UserResolver
+  alias CumbucaWeb.Resolver.SessionResolver
 
   query do
     field :all_users, non_null(list_of(non_null(:user))) do

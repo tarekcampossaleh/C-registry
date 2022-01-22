@@ -1,4 +1,4 @@
-defmodule Cumbuca.Graphql.Types do
+defmodule CumbucaWeb.Types do
   use Absinthe.Schema.Notation
 
   @desc "Conta de usuario"

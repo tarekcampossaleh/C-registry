@@ -1,4 +1,4 @@
-defmodule Cumbuca.Graphql.Resolver.SessionResolver do
+defmodule CumbucaWeb.Resolver.SessionResolver do
   alias Cumbuca.Repo
   alias Cumbuca.Schemas.User
 
@@ -19,7 +19,7 @@ defmodule Cumbuca.Graphql.Resolver.SessionResolver do
   end
 
   defp create_token(user) do
-    case Cumbuca.GuardianSerializer.encode_and_sign(user) do
+    case CumbucaWeb.GuardianSerializer.encode_and_sign(user) do
       {:ok, token, _full_claims} -> {:ok, %{token: token}}
       _ -> {:error, "Ocorreu um erro de autenticação"}
     end
