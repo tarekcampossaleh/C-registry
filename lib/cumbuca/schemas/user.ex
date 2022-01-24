@@ -33,6 +33,8 @@ defmodule Cumbuca.Schemas.User do
         changeset
     end
   end
+
+
 end
 
 # TODO: default values

@@ -1,46 +1,43 @@
 defmodule CumbucaWeb.Router do
   use CumbucaWeb, :router
 
+  alias CumbucaWeb.RegistrationController
+  alias CumbucaWeb.SessionController
+
   pipeline :browser do
-    plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug :accepts, ["html"]
   end
 
-  pipeline :graphql do
-    plug CumbucaWeb.Context
+  scope "/" do
+    pipe_through :browser 
   end
 
-  #pipeline :graphql do
-  #  plug Plug.Parsers,
-  #    parsers: [:urlencoded, :multipart, :json],
-  #    pass: ["*/*"],
-  #    json_decoder: Poison
-  #  plug Cumbuca.Context
+  pipeline :api do
+    plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+    #plug Guardian.Plug.LoadResource
+    #plug Guardian.Plug.Pipeline, module: CumbucaWeb.GuardianSerializer
+  end
+
+  pipeline :authenticated do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
+  #scope "/api/v1" do
+  #  pipe_through :api 
+
+  #  pipe_through :authenticated
+
+  #  #resources "/users", UserController, except: [:new, :edit]
   #end
-
+  
   scope "/api" do
-    pipe_through :graphql
- 
-    forward "/", Absinthe.Plug,
-      schema: CumbucaWeb.Schema
+    pipe_through :api
+
+    post "/sign_up", RegistrationController, :sign_up
+
+    post "/sign_in", SessionController, :sign_in
   end
- 
-  forward "/graphiql", Absinthe.Plug.GraphiQL,
-    schema: CumbucaWeb.Schema
 
-  #scope "/graphql" do
-  #  pipe_through :graphql
-
-  #  forward "/", Absinthe.Plug, schema: Cumbuca.Graphql.Schema
-  #end
-
-  #scope "/", Cumbuca do
-  #  pipe_through :browser # Use the default browser stack
-
-  #  #get "*path", PageController, :index
-  #end
-
-end
+  end
