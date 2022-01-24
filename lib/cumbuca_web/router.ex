@@ -3,6 +3,7 @@ defmodule CumbucaWeb.Router do
 
   alias CumbucaWeb.RegistrationController
   alias CumbucaWeb.SessionController
+  alias CumbucaWeb.UserController
 
   pipeline :browser do
     plug :fetch_session
@@ -38,6 +39,8 @@ defmodule CumbucaWeb.Router do
     post "/sign_up", RegistrationController, :sign_up
 
     post "/sign_in", SessionController, :sign_in
+
+    get "/users", UserController, :list_users
   end
 
   end
