@@ -14,4 +14,8 @@ defmodule CumbucaWeb.UserView do
       balance: user.balance,
     }
   end
+
+  def render("balance.json",  %{user: user} ) do 
+    %{balance: user.balance}
+  end
 end

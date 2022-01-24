@@ -16,13 +16,10 @@ defmodule CumbucaWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-    plug Guardian.Plug.VerifyHeader, realm: "Bearer"
-    #plug Guardian.Plug.LoadResource
-    #plug Guardian.Plug.Pipeline, module: CumbucaWeb.GuardianSerializer
   end
 
   pipeline :authenticated do
-    plug Guardian.Plug.EnsureAuthenticated
+    plug CumbucaWeb.Guardian.AuthPipeline
   end
 
   #scope "/api/v1" do
@@ -34,13 +31,20 @@ defmodule CumbucaWeb.Router do
   #end
   
   scope "/api" do
-    pipe_through :api
+    pipe_through [:api] 
 
     post "/sign_up", RegistrationController, :sign_up
 
     post "/sign_in", SessionController, :sign_in
 
     get "/users", UserController, :list_users
+
+  end
+
+  scope "/api" do
+    pipe_through [:api, :authenticated] 
+
+    get "/balance", UserController, :list_balance
   end
 
   end
