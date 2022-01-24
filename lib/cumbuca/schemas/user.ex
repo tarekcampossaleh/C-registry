@@ -4,9 +4,9 @@ defmodule Cumbuca.Schemas.User do
 
   schema "user" do
     field :name, :string
-    field :cpf, :integer
+    field :cpf, :string 
     field :email, :string
-    field :balance, :integer
+    field :balance, :integer, default: 0
     field :password, :string, virtual: true
     field :password_hash, :string
     has_many :transaction, Cumbuca.Schemas.Transaction
@@ -17,10 +17,11 @@ defmodule Cumbuca.Schemas.User do
   def changeset(user, params \\ %{}) do
     user
     |> cast(params, [:name, :cpf, :email, :balance, :password])
+    |> unique_constraint([:email, :cpf])
     |> validate_required([:name, :cpf, :email, :password])
+    |> put_change(:balance, 0)
+    |> validate_length(:password, min: 6)
     |> validate_format(:email, ~r/^[A-Za-z0-9._%+-+']+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/)
-    |> unique_constraint(:email)
-    |> unique_constraint(:cpf)
     |> hash_password()
   end
 
@@ -34,10 +35,3 @@ defmodule Cumbuca.Schemas.User do
     end
   end
 end
-
-# TODO: default values
-#
-# |> validate_format(
-#  :cpf,
-#  ~r/([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
-# )

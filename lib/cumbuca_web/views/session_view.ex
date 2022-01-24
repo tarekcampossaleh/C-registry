@@ -3,13 +3,17 @@ defmodule CumbucaWeb.SessionView do
 
   def render("sign_in.json", %{user: user, jwt: jwt}) do
     %{
-      status: :ok,
       data: %{
         token: jwt,
-        email: user.email
-      },
-      message:
-        "You are successfully logged in! Add this token to authorization header to make authorized requests."
+        email: user.email,
+        id: user.id
+      }
+          }
+  end
+  
+  def render("error.json", %{message: message}) do 
+    %{
+      data: message
     }
   end
 end

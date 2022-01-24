@@ -3,11 +3,15 @@ defmodule CumbucaWeb.RegistrationView do
 
   def render("success.json", %{user: user}) do
     %{
-      status: :ok,
-      message: """
-        Now you can sign in using your email and password at /api/sign_in. You will receive JWT token.
-        Please put this token into Authorization header for all authorized requests.
-      """
+      id: user.id,
+      message: "Conta criada com sucesso!"
+    }
+  end
+
+  def render("error.json", %{changeset: _changeset}) do
+    %{
+      message: "Não foi possivel criar a conta, campo inválido" 
     }
   end
 end
+

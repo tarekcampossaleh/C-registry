@@ -4,7 +4,7 @@ defmodule Cumbuca.Repo.Migrations.Initial do
   def change do
     create table("user") do
       add :name, :string
-      add :cpf, :bigint
+      add :cpf, :string
       add :email, :string
       add :balance, :integer
       add :password_hash, :string
@@ -19,6 +19,8 @@ defmodule Cumbuca.Repo.Migrations.Initial do
 
       timestamps()
     end
+
+    create unique_index(:user, [:email, :cpf])
   end
 end
 
