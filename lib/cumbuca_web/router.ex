@@ -11,7 +11,7 @@ defmodule CumbucaWeb.Router do
   end
 
   scope "/" do
-    pipe_through :browser 
+    pipe_through :browser
   end
 
   pipeline :api do
@@ -22,29 +22,27 @@ defmodule CumbucaWeb.Router do
     plug CumbucaWeb.Guardian.AuthPipeline
   end
 
-  #scope "/api/v1" do
+  # scope "/api/v1" do
   #  pipe_through :api 
 
   #  pipe_through :authenticated
 
   #  #resources "/users", UserController, except: [:new, :edit]
-  #end
-  
+  # end
+
   scope "/api" do
-    pipe_through [:api] 
+    pipe_through [:api]
 
     post "/sign_up", RegistrationController, :sign_up
 
     post "/sign_in", SessionController, :sign_in
 
     get "/users", UserController, :list_users
-
   end
 
   scope "/api" do
-    pipe_through [:api, :authenticated] 
+    pipe_through [:api, :authenticated]
 
     get "/balance", UserController, :list_balance
   end
-
-  end
+end

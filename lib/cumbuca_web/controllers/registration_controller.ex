@@ -1,4 +1,4 @@
-defmodule CumbucaWeb.RegistrationController do 
+defmodule CumbucaWeb.RegistrationController do
   use CumbucaWeb, :controller
 
   alias Cumbuca.Schemas.User
@@ -11,8 +11,9 @@ defmodule CumbucaWeb.RegistrationController do
       {:ok, user} ->
         conn
         |> put_status(:created)
-        #|> put_resp_header("location", user_path(conn, :show, user))
+        # |> put_resp_header("location", user_path(conn, :show, user))
         |> render("success.json", user: user)
+
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)

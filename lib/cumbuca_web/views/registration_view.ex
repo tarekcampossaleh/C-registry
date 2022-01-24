@@ -1,4 +1,4 @@
-defmodule CumbucaWeb.RegistrationView do 
+defmodule CumbucaWeb.RegistrationView do
   use CumbucaWeb, :view
 
   def render("success.json", %{user: user}) do

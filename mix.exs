@@ -20,8 +20,8 @@ defmodule Cumbuca.MixProject do
   def application do
     [
       mod: {Cumbuca.Application, []},
-      extra_applications: [:logger, :runtime_tools, :guardian],
-      #applications: [:guardian]
+      extra_applications: [:logger, :runtime_tools, :guardian]
+      # applications: [:guardian]
     ]
   end
 

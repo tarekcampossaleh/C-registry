@@ -15,7 +15,7 @@ defmodule CumbucaWeb.Context do
   """
   def build_context(conn) do
     with ["Bearer " <> token] <- get_req_header(conn, "Authorization"),
-    {:ok, current_user} <- authorize(token) do
+         {:ok, current_user} <- authorize(token) do
       %{current_user: current_user}
     else
       _ -> %{}
@@ -26,10 +26,9 @@ defmodule CumbucaWeb.Context do
     case CumbucaWeb.GuardianSerializer.resource_from_token(token) do
       {:ok, user, _claims} ->
         {:ok, user}
+
       _ ->
         {:error, :unauthorized}
     end
-   end
-  
-
+  end
 end

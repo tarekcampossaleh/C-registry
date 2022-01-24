@@ -8,6 +8,7 @@ defmodule CumbucaWeb.Resolver.UserResolver do
   def current(_, %{context: %{current_user: user}}) do
     {:ok, user}
   end
+
   def current(_, info) do
     {:error, %{info: info.context}}
   end

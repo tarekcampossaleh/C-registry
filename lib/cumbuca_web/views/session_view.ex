@@ -1,4 +1,4 @@
-defmodule CumbucaWeb.SessionView do 
+defmodule CumbucaWeb.SessionView do
   use CumbucaWeb, :view
 
   def render("sign_in.json", %{user: user, jwt: jwt}) do
@@ -8,7 +8,8 @@ defmodule CumbucaWeb.SessionView do
         token: jwt,
         email: user.email
       },
-      message: "You are successfully logged in! Add this token to authorization header to make authorized requests."
+      message:
+        "You are successfully logged in! Add this token to authorization header to make authorized requests."
     }
   end
 end

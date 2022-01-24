@@ -1,4 +1,4 @@
-defmodule CumbucaWeb.GuardianSerializer do 
+defmodule CumbucaWeb.GuardianSerializer do
   use Guardian, otp_app: :cumbuca
 
   alias Cumbuca.Repo
@@ -12,6 +12,7 @@ defmodule CumbucaWeb.GuardianSerializer do
     # is a poor subject.
     {:ok, email}
   end
+
   def subject_for_token(_, _) do
     {:error, :reason_for_error}
   end
@@ -21,8 +22,9 @@ defmodule CumbucaWeb.GuardianSerializer do
     # found in the `"sub"` key. In above `subject_for_token/2` we returned
     # the resource id so here we'll rely on that to look it up.
     resource = Repo.get_by(User, email: email)
-    {:ok,  resource}
+    {:ok, resource}
   end
+
   def resource_from_claims(_claims) do
     {:error, :reason_for_error}
   end
