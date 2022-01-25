@@ -6,14 +6,15 @@ defmodule Cumbuca.Schemas.Transaction do
     field :receiver_id, :integer
     field :sender_id, :integer
     field :value, :integer
-    belongs_to :user, Cumbuca.Schemas.User
+    field :refundable, :boolean, default: true
 
     timestamps()
   end
 
   def changeset(transaction, params \\ %{}) do
     transaction
-    |> cast(params, [:value])
+    |> cast(params, [:value, :refundable])
     |> validate_required([:value])
+    |> put_change(:refundable, true)
   end
 end

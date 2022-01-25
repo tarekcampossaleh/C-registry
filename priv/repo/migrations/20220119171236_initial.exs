@@ -16,6 +16,8 @@ defmodule Cumbuca.Repo.Migrations.Initial do
       add :sender_id, references("user")
       add :receiver_id, references("user")
       add :value, :integer
+      add :refundable, :boolean
+
 
       timestamps()
     end

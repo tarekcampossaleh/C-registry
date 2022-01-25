@@ -39,5 +39,7 @@ defmodule CumbucaWeb.Router do
     get "/balance", UserController, :list_balance
 
     post "/transaction", TransactionController, :register_transaction
+
+    post "/refund", TransactionController, :refund_transaction
   end
 end

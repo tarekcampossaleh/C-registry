@@ -12,4 +12,7 @@ defmodule CumbucaWeb.TransactionView do
       new_balance: balance
     }
   end
+  def render("error.json", %{message: message}) do 
+    %{status: :error, message: message}
+  end
 end
