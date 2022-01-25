@@ -16,6 +16,7 @@ defmodule Cumbuca.Model.Operations do
         update_balance(receiver_id, value)
         {:ok, transaction} = register_transaction(sender_id, receiver_id, value)
         {:ok, transaction, current_balance(sender_id)}
+
       false ->
         {:error, "Não há saldo suficiente em conta"}
     end

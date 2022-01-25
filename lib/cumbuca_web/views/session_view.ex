@@ -8,10 +8,10 @@ defmodule CumbucaWeb.SessionView do
         email: user.email,
         id: user.id
       }
-          }
+    }
   end
-  
-  def render("error.json", %{message: message}) do 
+
+  def render("error.json", %{message: message}) do
     %{
       data: message
     }

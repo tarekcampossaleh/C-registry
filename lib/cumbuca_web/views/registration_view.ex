@@ -10,8 +10,7 @@ defmodule CumbucaWeb.RegistrationView do
 
   def render("error.json", %{changeset: _changeset}) do
     %{
-      message: "Não foi possivel criar a conta, campo inválido" 
+      message: "Não foi possivel criar a conta, campo inválido"
     }
   end
 end
-

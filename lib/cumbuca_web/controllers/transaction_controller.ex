@@ -10,27 +10,33 @@ defmodule CumbucaWeb.TransactionController do
     user
   end
 
-  def register_transaction(conn, %{"transaction" => %{"receiver_id" => receiver_id, "amount" => amount}}) do 
-   user = get_current_user(conn)
+  def register_transaction(conn, %{
+        "transaction" => %{"receiver_id" => receiver_id, "amount" => amount}
+      }) do
+    user = get_current_user(conn)
+
     case Operations.charge_transaction(user.id, receiver_id, amount) do
-       {:ok, transaction, balance} -> render(conn, "transaction.json", %{ transaction: transaction,balance: balance  })
-      {:error, message} -> 
-      conn
-      |> put_status(:precondition_failed)
-      |> render( "error.json", message: message)
+      {:ok, transaction, balance} ->
+        render(conn, "transaction.json", %{transaction: transaction, balance: balance})
+
+      {:error, message} ->
+        conn
+        |> put_status(:precondition_failed)
+        |> render("error.json", message: message)
     end
   end
 
-  def refund_transaction(conn, %{ "transaction_id" => transaction_id }) do 
+  def refund_transaction(conn, %{"transaction_id" => transaction_id}) do
     user = get_current_user(conn)
+
     case Balance.refund(user.id, transaction_id) do
-      {:ok, transaction, balance} -> render(conn, "transaction.json", %{ transaction: transaction,balance: balance} )
-      {:error, message} -> 
-      conn
-      |> put_status(:precondition_failed)
-      |> render( "error.json", message: message)
+      {:ok, transaction, balance} ->
+        render(conn, "transaction.json", %{transaction: transaction, balance: balance})
+
+      {:error, message} ->
+        conn
+        |> put_status(:precondition_failed)
+        |> render("error.json", message: message)
     end
-    
   end
 end
-

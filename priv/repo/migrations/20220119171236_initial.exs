@@ -18,7 +18,6 @@ defmodule Cumbuca.Repo.Migrations.Initial do
       add :value, :integer
       add :refundable, :boolean
 
-
       timestamps()
     end
 

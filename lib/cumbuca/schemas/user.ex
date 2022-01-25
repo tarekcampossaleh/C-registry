@@ -4,7 +4,7 @@ defmodule Cumbuca.Schemas.User do
 
   schema "user" do
     field :name, :string
-    field :cpf, :string 
+    field :cpf, :string
     field :email, :string
     field :balance, :integer, default: 0
     field :password, :string, virtual: true

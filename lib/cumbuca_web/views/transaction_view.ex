@@ -1,7 +1,7 @@
-defmodule CumbucaWeb.TransactionView do 
-  use CumbucaWeb, :view 
+defmodule CumbucaWeb.TransactionView do
+  use CumbucaWeb, :view
 
-  def render("transaction.json", %{transaction: transaction, balance: balance}) do 
+  def render("transaction.json", %{transaction: transaction, balance: balance}) do
     %{
       transaction: %{
         id: transaction.id,
@@ -12,7 +12,8 @@ defmodule CumbucaWeb.TransactionView do
       new_balance: balance
     }
   end
-  def render("error.json", %{message: message}) do 
+
+  def render("error.json", %{message: message}) do
     %{status: :error, message: message}
   end
 end

@@ -8,7 +8,7 @@ defmodule Cumbuca.Model.Connections do
 
   def list_users, do: list_all(User)
 
-  def get_transaction(id), do: Repo.get( Transaction, id )
+  def get_transaction(id), do: Repo.get(Transaction, id)
 
   def get_user(id), do: Repo.get!(User, id)
 
