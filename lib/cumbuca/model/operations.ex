@@ -5,7 +5,7 @@ defmodule Cumbuca.Model.Operations do
 
   import Cumbuca.Model.Balance
 
-  def register_transaction(sender_id, receiver_id, value) do
+  defp register_transaction(sender_id, receiver_id, value) do
     Repo.insert(%Transaction{sender_id: sender_id, receiver_id: receiver_id, value: value})
   end
 
@@ -14,8 +14,8 @@ defmodule Cumbuca.Model.Operations do
       true ->
         update_balance(sender_id, -value)
         update_balance(receiver_id, value)
-        register_transaction(sender_id, receiver_id, value)
-
+        {:ok, transaction} = register_transaction(sender_id, receiver_id, value)
+        {:ok, transaction, current_balance(sender_id)}
       false ->
         {:error, "Não há saldo suficiente em conta"}
     end

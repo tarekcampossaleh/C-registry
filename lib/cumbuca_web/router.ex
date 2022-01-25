@@ -4,6 +4,7 @@ defmodule CumbucaWeb.Router do
   alias CumbucaWeb.RegistrationController
   alias CumbucaWeb.SessionController
   alias CumbucaWeb.UserController
+  alias CumbucaWeb.TransactionController
 
   pipeline :browser do
     plug :fetch_session
@@ -22,14 +23,6 @@ defmodule CumbucaWeb.Router do
     plug CumbucaWeb.Guardian.AuthPipeline
   end
 
-  # scope "/api/v1" do
-  #  pipe_through :api 
-
-  #  pipe_through :authenticated
-
-  #  #resources "/users", UserController, except: [:new, :edit]
-  # end
-
   scope "/api" do
     pipe_through [:api]
 
@@ -44,5 +37,7 @@ defmodule CumbucaWeb.Router do
     pipe_through [:api, :authenticated]
 
     get "/balance", UserController, :list_balance
+
+    post "/transaction", TransactionController, :register_transaction
   end
 end
