@@ -35,4 +35,13 @@ defmodule Cumbuca.Model.Operations do
         end
     end
   end
+
+  def query_transactions(user_id, first_date, second_date) do 
+    #first_date = "2022-01-25 04:08:01"
+    #second_date = "2022-01-25 04:48:02"
+    #user_id = 1
+    query = "SELECT * FROM \"transaction\" WHERE \"sender_id\"= #{user_id} OR \"receiver_id\" = #{user_id}  AND \"inserted_at\" BETWEEN \'#{first_date}\' AND \'#{second_date}\' "
+    {:ok, data} = Ecto.Adapters.SQL.query(Repo,query )
+    data.rows
+  end
 end
