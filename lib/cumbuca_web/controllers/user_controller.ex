@@ -19,5 +19,3 @@ defmodule CumbucaWeb.UserController do
     render(conn, "balance.json", user: user)
   end
 end
-
-# TODO: error handling

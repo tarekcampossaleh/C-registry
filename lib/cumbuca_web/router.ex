@@ -23,7 +23,7 @@ defmodule CumbucaWeb.Router do
     plug CumbucaWeb.Guardian.AuthPipeline
   end
 
-  scope "/api" do
+  scope "/" do
     pipe_through [:api]
 
     post "/sign_up", RegistrationController, :sign_up
@@ -33,7 +33,7 @@ defmodule CumbucaWeb.Router do
     get "/users", UserController, :list_users
   end
 
-  scope "/api" do
+  scope "/" do
     pipe_through [:api, :authenticated]
 
     get "/balance", UserController, :list_balance

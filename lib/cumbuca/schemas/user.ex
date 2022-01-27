@@ -9,7 +9,6 @@ defmodule Cumbuca.Schemas.User do
     field :balance, :integer, default: 0
     field :password, :string, virtual: true
     field :password_hash, :string
-    has_many :transaction, Cumbuca.Schemas.Transaction
 
     timestamps()
   end

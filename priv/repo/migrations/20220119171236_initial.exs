@@ -24,7 +24,3 @@ defmodule Cumbuca.Repo.Migrations.Initial do
     create unique_index(:user, [:email, :cpf])
   end
 end
-
-# TODO: default values
-# TODO: money value precision, currently we dont have a way to know the currency's and
-# the digits precision
