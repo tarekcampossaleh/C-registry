@@ -17,7 +17,7 @@ defmodule CumbucaWeb.TransactionView do
     %{status: :error, message: message}
   end
 
-  def render("list_transactions.json", %{transaction_list: transaction_list}) do 
+  def render("list_transactions.json", %{transaction_list: transaction_list}) do
     %{data: render_many(transaction_list, CumbucaWeb.TransactionView, "transaction_view.json")}
   end
 
@@ -32,5 +32,4 @@ defmodule CumbucaWeb.TransactionView do
       }
     }
   end
-
 end

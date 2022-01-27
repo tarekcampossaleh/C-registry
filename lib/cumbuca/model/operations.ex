@@ -36,26 +36,32 @@ defmodule Cumbuca.Model.Operations do
     end
   end
 
-  def query_transactions(user_id, first_date, second_date) do 
-    query = "SELECT * FROM \"transaction\" WHERE (\"sender_id\"= #{user_id} OR \"sender_id\"= #{user_id}) AND \"inserted_at\" BETWEEN \'#{first_date}\' AND \'#{second_date}\' ORDER BY \"inserted_at\""
+  def query_transactions(user_id, first_date, second_date) do
+    query =
+      "SELECT * FROM \"transaction\" WHERE (\"sender_id\"= #{user_id} OR \"sender_id\"= #{user_id}) AND \"inserted_at\" BETWEEN \'#{first_date}\' AND \'#{second_date}\' ORDER BY \"inserted_at\""
 
     case Ecto.Adapters.SQL.query(Repo, query) do
-      {:ok, data} -> 
+      {:ok, data} ->
         case query_transform(data) do
-        [] -> {:error, "Não foram encontrados transações nessa data"}
-        res -> {:ok, res} 
+          [] -> {:error, "Não foram encontrados transações nessa data"}
+          res -> {:ok, res}
         end
-      {:error, _message} -> {:error, message: "Dados inseridos são inválidos"}
+
+      {:error, _message} ->
+        {:error, message: "Dados inseridos são inválidos"}
     end
   end
 
   def query_transform([]), do: []
-  def query_transform(res) do 
-    cols = Enum.map res.columns, &(String.to_atom(&1))
 
-    roles = Enum.map res.rows, fn(row) ->
-      struct(Cumbuca.Schemas.Transaction, Enum.zip(cols, row))
-    end
+  def query_transform(res) do
+    cols = Enum.map(res.columns, &String.to_atom(&1))
+
+    roles =
+      Enum.map(res.rows, fn row ->
+        struct(Cumbuca.Schemas.Transaction, Enum.zip(cols, row))
+      end)
+
     roles
   end
 end
