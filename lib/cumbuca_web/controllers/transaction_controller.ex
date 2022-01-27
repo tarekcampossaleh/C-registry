@@ -39,4 +39,18 @@ defmodule CumbucaWeb.TransactionController do
         |> render("error.json", message: message)
     end
   end
+
+  def query_transactions(conn, _params) do 
+    user = get_current_user(conn)
+    %{query_params: query} = conn
+    %{"final_date" => final_date, "intial_date" => initial_date} = query
+
+    case Operations.query_transactions(user.id, initial_date, final_date) do 
+      {:ok, data} -> render(conn, "list_transactions.json", transaction_list: data)
+      {:error, message} ->
+        conn
+        |> put_status(:precondition_failed)
+        |> render("error.json", message: message)
+    end
+  end
 end

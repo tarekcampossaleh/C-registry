@@ -40,6 +40,8 @@ defmodule CumbucaWeb.Router do
 
     post "/transaction", TransactionController, :register_transaction
 
+    get "/transaction", TransactionController, :query_transactions
+
     post "/refund", TransactionController, :refund_transaction
   end
 end
