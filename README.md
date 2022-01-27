@@ -1,15 +1,34 @@
 # Cumbuca
+## Essa aplicação se baseia em um servidor de registro de contas e transações financeiras, utilizando Elixir + Phoenix + Ecto + Guardian
 
-To start your Phoenix server:
+Para iniciar o server:
+ 
+  * Instale as dependencias com `mix deps.get`
+  * Crie e incie a migration da database com `mix ecto.setup`
+  * Inicie o Phoenix endpoint com `mix phx.server` ou dentro de uma IEx com `iex -S mix phx.server`
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+Agora as [rotas](https://github.com/tarekcampossaleh/cumbuca/blob/main/README.md#rotas) estão disponíveis em [`localhost:4000/`](http://localhost:4000) 
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Database
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+- Essa aplicação utiliza PostgreSQL como database
+- Por default, ao rodar `mix ecto.setup` um usário `admin` com `$ 50000` de saldo é criado, tendo em vista que não é possível adicionar saldo no momento de criação de novas contas, por motivos de regra de negócio. Utilize o token do usuário `admin` para realizar as transações iniciais para as contas adicionadas.
+- Admin User:
+` email: "admin@root.com", password: "secret"`
 
+### Tabelas
+
+Table user
+
+| id               | name    | email   | balance | password_hash | inserted_at        | updated_at         |
+|------------------|---------|---------|---------|---------------|--------------------|--------------------|
+| int8 Primary key | varchar | varchar | int4    | varchar       | timestamp utc time | timestamp utc time |
+
+Table transactions
+
+| id               | sender_id                    | receiver_id                  | value | refundable         | inserted_at        | updated_at         |
+|------------------|------------------------------|------------------------------|-------|--------------------|--------------------|--------------------|
+| int8 Primary key | int8 -> user(id) foreign key | int8 -> user(id) foreign key | int4  | bool default: true | timestamp utc time | timestamp utc time |
 
 ## Rotas 
 
@@ -120,6 +139,9 @@ post /refund
 
 ### Busca de transações por data
 Formato da data: `yyyy-mm-dd hh:mm:ss` ou apenas por dia `yyyy-mm-dd`
+
+:warning: ***Atenção:*** As datas estão ordenadas/inseridas na timezone [UTC](https://time.is/pt_br/UTC)
+
 *Request:*
 ```css
 get /transaction?intial_date=2022-01-25%2005%3A00%3A51&final_date=2022-01-27%2018%3A29%3A44
