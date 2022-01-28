@@ -4,6 +4,6 @@ defmodule CumbucaWeb.Guardian.AuthPipeline do
     module: CumbucaWeb.GuardianSerializer,
     error_handler: CumbucaWeb.Guardian.AuthErrorHandler
 
-  plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+  plug Guardian.Plug.VerifyHeader, scheme: "Bearer"
   plug Guardian.Plug.EnsureAuthenticated
 end
