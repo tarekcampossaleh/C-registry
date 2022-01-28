@@ -1,6 +1,5 @@
 defmodule CumbucaWeb.RegistrationControllerTest do
   use CumbucaWeb.ConnCase, async: true
-  alias Cumbuca.Repo
 
   @user_attrs %{
     email: "user@mail.com",

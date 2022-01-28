@@ -30,7 +30,6 @@ defmodule CumbucaWeb.Router do
 
     post "/sign_in", SessionController, :sign_in
 
-    get "/users", UserController, :list_users
   end
 
   scope "/" do
