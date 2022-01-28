@@ -38,7 +38,7 @@ defmodule Cumbuca.Model.Operations do
 
   def query_transactions(user_id, first_date, second_date) do
     query =
-      "SELECT * FROM \"transaction\" WHERE (\"sender_id\"= #{user_id} OR \"sender_id\"= #{user_id}) AND \"inserted_at\" BETWEEN \'#{first_date}\' AND \'#{second_date}\' ORDER BY \"inserted_at\""
+      "SELECT * FROM \"transaction\" WHERE (\"sender_id\"= #{user_id} OR \"receiver_id\"= #{user_id}) AND \"inserted_at\" BETWEEN \'#{first_date}\' AND \'#{second_date}\' ORDER BY \"inserted_at\""
 
     case Ecto.Adapters.SQL.query(Repo, query) do
       {:ok, data} ->
