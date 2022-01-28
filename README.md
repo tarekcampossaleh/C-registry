@@ -9,6 +9,10 @@ Para iniciar o server:
 
 Agora as [rotas](https://github.com/tarekcampossaleh/cumbuca/blob/main/README.md#rotas) estão disponíveis em [`localhost:4000/`](http://localhost:4000) 
 
+## Testes
+
+Rode os testes com `mix test`
+
 ## Database
 
 - Essa aplicação utiliza PostgreSQL como database
