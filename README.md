@@ -24,9 +24,9 @@ Rode os testes com `mix test`
 
 Table user
 
-| id               | name    | email   | balance | password_hash | inserted_at        | updated_at         |
-|------------------|---------|---------|---------|---------------|--------------------|--------------------|
-| int8 Primary key | varchar | varchar | int4    | varchar       | timestamp utc time | timestamp utc time |
+| id               | name    | email   | cpf     | balance | password_hash | inserted_at        | updated_at         |
+|------------------|---------|---------|---------|---------|---------------|-------------------|-------------------|
+| int8 Primary key | varchar | varchar | varchar | int4    | varchar       | timestamp utc time | timestamp utc time |
 
 Table transactions
 
