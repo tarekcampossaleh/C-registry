@@ -45,8 +45,6 @@ defmodule Cumbuca.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:absinthe, "~> 1.6"},
-      {:absinthe_plug, "~> 1.5"},
       {:guardian, "~> 2.0"},
       {:poison, "~> 5.0"},
       {:bcrypt_elixir, "~> 2.0"}
