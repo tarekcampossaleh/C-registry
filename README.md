@@ -39,7 +39,7 @@ Table transactions
 ### Cadastro de conta
 *Request:*
 ```css
-post /sign_up
+POST /sign_up
 ```
 *Body:*
 ```json
@@ -63,7 +63,7 @@ post /sign_up
 ### Autenticação
 *Request:*
 ```css
-post /sign_in
+POST /sign_in
 ```
 *Body:*
 ```json
@@ -93,7 +93,7 @@ Authorization: Bearer <token>
 
 *Request:*
 ```css
-post /transaction
+POST /transaction
 ```
 *Body:*
 ```json
@@ -120,7 +120,7 @@ post /transaction
 ### Estorno de transação
 *Request:*
 ```css
-post /refund
+POST /refund
 ```
 *Body:*
 ```json
@@ -148,7 +148,7 @@ Formato da data: `yyyy-mm-dd hh:mm:ss` ou apenas por dia `yyyy-mm-dd`
 
 *Request:*
 ```css
-get /transaction?intial_date=2022-01-25%2005%3A00%3A51&final_date=2022-01-27%2018%3A29%3A44
+GET /transaction?intial_date=2022-01-25%2005%3A00%3A51&final_date=2022-01-27%2018%3A29%3A44
 ```
 *Query:*
 ```html
@@ -192,7 +192,7 @@ final_date: 2022-01-27 18:29:44
 ### Visualização de saldo
 *Request:*
 ```css
-get /balance
+GET /balance
 ```
 *Response:*
 ```json
