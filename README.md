@@ -1,4 +1,5 @@
-# Cumbuca
+# C-registry
+
 ## Essa aplicação se baseia em um servidor de registro de contas e transações financeiras, utilizando Elixir + Phoenix + Ecto + Guardian
 
 Para iniciar o server:
