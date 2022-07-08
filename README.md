@@ -46,7 +46,7 @@ POST /sign_up
 ```json
 {
 	"user": {
-		"name": "Cumbuca User",
+		"name": "User",
 		"cpf": "000.000.000-00",
 		"email": "user@mail.com",
 		"password": "secret"
